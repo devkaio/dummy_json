@@ -1,16 +1,19 @@
 # dummy_json
 
-A new Flutter project.
+Flutter app to communicate with DummyJSON API.
+## Roadmap
+- [x] API Service classes
+- [x] ChangeNotifier State Management Approach
+- [x] MVVM Architecture
+- [x] Get It Dependency Injection
+- [ ] Exceptions and Error Handling
+- [x] Posts
+- [ ] Auth
+- [ ] Products
+- [ ] Users
+- [ ] TODO's
+- [ ] Quotes
+- [ ] Design
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Preview
+![image](screeshots/demo.gif)
