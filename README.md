@@ -1,8 +1,8 @@
-![tests](.github/workflows/tests.yaml/badge.svg)
-
+<a href="https://github.com/devkaio/dummy_json/actions"><img src="https://github.com/devkaio/dummy_json/workflows/tests/badge.svg?event=push" alt="Build Status"></a>
 # dummy_json
 
 Flutter app to communicate with DummyJSON API.
+
 ## Roadmap
 - [x] API Service classes
 - [x] ChangeNotifier State Management Approach
