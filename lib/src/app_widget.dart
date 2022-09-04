@@ -1,6 +1,9 @@
+import 'package:dummy_json/src/features/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 
-import 'features/home/view/home_page.dart';
+import 'features/auth/features/register/view/register_page.dart';
+import 'features/auth/features/start/view/start_page.dart';
+import 'shared/constants/constants.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -10,9 +13,12 @@ class AppWidget extends StatelessWidget {
     return MaterialApp(
       title: "Dummy JSON",
       color: Colors.teal,
-      initialRoute: "/",
+      initialRoute: NamedRoute.start,
       routes: {
-        "/": (context) => const HomePage(),
+        NamedRoute.start: (context) => const StartPage(),
+        //TODO: login
+        NamedRoute.register: (context) => const RegisterPage(),
+        NamedRoute.home: (context) => const HomePage(),
       },
     );
   }
