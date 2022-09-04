@@ -1,6 +1,8 @@
+import 'package:dummy_json/src/exceptions/failure.dart';
 import 'package:dummy_json/src/features/home/datasource/home_datasource.dart';
 import 'package:dummy_json/src/features/home/state/home_state.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+
 
 import '../model/post.dart';
 
@@ -11,6 +13,7 @@ class HomeViewModel extends ChangeNotifier {
   HomeViewModel(this.datasource);
 
   List<Post> _posts = [];
+  Failure? _errorMessage;
 
   void changeState(HomeState newState) {
     state = newState;
@@ -18,16 +21,18 @@ class HomeViewModel extends ChangeNotifier {
   }
 
   List<Post> get posts => _posts;
+  Failure? get errorMessage => _errorMessage;
 
   void getPosts() async {
     changeState(HomeStateLoading());
 
-    _posts = await datasource.getPosts();
+    try {
+      _posts = await datasource.getPosts();
 
-    if (_posts.isNotEmpty) {
       changeState(HomeStateSuccess());
-    } else {
-      changeState(HomeStateSuccess());
+    } on Failure catch (e) {
+      _errorMessage = e;
+      changeState(HomeStateError());
     }
   }
 }
