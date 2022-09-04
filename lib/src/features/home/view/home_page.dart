@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
         icon: Icons.warning,
         title: homeViewModel.errorMessage?.type.toString() ?? "Error",
         subtitle: homeViewModel.errorMessage?.message ?? "Error",
+        leftButtonText: "Cancel",
         rightButtonPressed: () {
           Navigator.pop(context);
           homeViewModel.getPosts();
