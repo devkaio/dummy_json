@@ -7,8 +7,14 @@ Flutter app to communicate with DummyJSON API.
 - [x] MVVM Architecture
 - [x] Get It Dependency Injection
 - [ ] Exceptions and Error Handling
+    - [x] Base classes
+    - [x] Try/Catch
+    - [ ] Messages and codes
 - [x] Posts
 - [ ] Auth
+    - [x] Register
+    - [ ] Login
+    - [ ] Forgot password
 - [ ] Products
 - [ ] Users
 - [ ] TODO's
