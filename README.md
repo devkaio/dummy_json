@@ -1,4 +1,5 @@
-<a href="https://github.com/devkaio/dummy_json/actions"><img src="https://github.com/devkaio/dummy_json/workflows/tests/badge.svg" alt="Build Status"></a>
+![tests](https://github.com/devkaio/dummy_json/actions/workflows/tests.yml/badge.svg)
+
 # dummy_json
 
 Flutter app to communicate with DummyJSON API.
