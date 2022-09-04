@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dummy_json/src/services/api_service.dart';
 import 'package:http/http.dart' as http;
 
@@ -27,7 +29,8 @@ class HttpService implements ApiService {
   @override
   Future post({required String path, Map? body}) async {
     Uri url = Uri.https(_urlBase, path);
-    final response = http.post(url, body: body);
+    final response = await http.post(url,
+        headers: {'Content-Type': 'application/json'}, body: jsonEncode(body));
     return response;
   }
 
