@@ -1,4 +1,4 @@
-![tests](https://github.com/devkaio/dummy_json/actions/workflows/tests.yml/badge.svg)
+![tests](.github/workflows/tests.yaml/badge.svg)
 
 # dummy_json
 
