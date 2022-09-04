@@ -6,8 +6,8 @@ class BaseDialog extends StatelessWidget {
 
   ///If [rightButtonText] is null, default behavior is pop the dialog.
   final ValueGetter<void>? rightButtonPressed;
-  final String? leftButtonText;
-  final String? rightButtonText;
+  final String leftButtonText;
+  final String rightButtonText;
 
   /// Default message on screen after pop the dialog
   final String? errorMessage;
@@ -21,11 +21,11 @@ class BaseDialog extends StatelessWidget {
     Key? key,
     this.leftButtonPressed,
     this.rightButtonPressed,
-    this.leftButtonText,
-    this.rightButtonText,
     this.errorMessage,
     this.icon,
     this.iconColor,
+    required this.leftButtonText,
+    required this.rightButtonText,
     required this.title,
     required this.subtitle,
   }) : super(key: key);
@@ -53,19 +53,20 @@ class BaseDialog extends StatelessWidget {
               : Text(title),
           content: Text(subtitle),
           actions: [
-            leftButtonText != null
+            leftButtonPressed != null
                 ? TextButton(
                     onPressed: leftButtonPressed,
-                    child: Text(leftButtonText!),
+                    child: Text(leftButtonText),
                   )
                 : TextButton(
                     onPressed: () => Navigator.pop(context),
                     child: const Text("Cancelar"),
                   ),
-            rightButtonText != null
+            rightButtonPressed != null
                 ? TextButton(
                     onPressed: rightButtonPressed,
-                    child: Text(rightButtonText!))
+                    child: Text(rightButtonText),
+                  )
                 : TextButton(
                     onPressed: () => Navigator.pop(context),
                     child: const Text("Ok"),
