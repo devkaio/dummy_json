@@ -15,7 +15,7 @@ class HomeDatasource {
     try {
       final response = await service.get(path: "/posts") as Response;
 
-      if (response.statusCode == 400) {
+      if (response.statusCode == 200) {
         final decoded = jsonDecode(response.body)["posts"] as List;
         final list = decoded.map((e) => Post.fromMap(e)).toList();
         return list;
