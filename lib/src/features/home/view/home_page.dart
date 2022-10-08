@@ -37,38 +37,36 @@ class _HomePageState extends State<HomePage> {
       ),
       body: AnimatedBuilder(
         animation: homeViewModel,
-        builder: (context, child) => _build(context),
+        builder: (context, child) {
+          if (homeViewModel.state is HomeStateLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (homeViewModel.state is HomeStateError) {
+            return BaseDialog(
+              errorMessage: homeViewModel.errorMessage?.message ?? "Error",
+              icon: Icons.warning,
+              title: homeViewModel.errorMessage?.type.toString() ?? "Error",
+              subtitle: homeViewModel.errorMessage?.message ?? "Error",
+              leftButtonText: "Cancel",
+              rightButtonPressed: () {
+                Navigator.pop(context);
+                homeViewModel.getPosts();
+              },
+              rightButtonText: "Tentar novamente",
+            );
+          } else {
+            return ListView.builder(
+              itemCount: homeViewModel.posts.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(homeViewModel.posts[index].title),
+                );
+              },
+            );
+          }
+        },
       ),
     );
-  }
-
-  Widget _build(BuildContext context) {
-    if (homeViewModel.state is HomeStateLoading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
-    } else if (homeViewModel.state is HomeStateError) {
-      return BaseDialog(
-        errorMessage: homeViewModel.errorMessage?.message ?? "Error",
-        icon: Icons.warning,
-        title: homeViewModel.errorMessage?.type.toString() ?? "Error",
-        subtitle: homeViewModel.errorMessage?.message ?? "Error",
-        leftButtonText: "Cancel",
-        rightButtonPressed: () {
-          Navigator.pop(context);
-          homeViewModel.getPosts();
-        },
-        rightButtonText: "Tentar novamente",
-      );
-    } else {
-      return ListView.builder(
-        itemCount: homeViewModel.posts.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(homeViewModel.posts[index].title),
-          );
-        },
-      );
-    }
   }
 }
